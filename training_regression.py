@@ -17,7 +17,7 @@ from utils.general_utils import get_arg_parser, \
     get_cluster_output_dir_name
 import yaml
 import matplotlib.pyplot as plt
-import shap
+# import shap
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 

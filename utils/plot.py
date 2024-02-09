@@ -26,6 +26,21 @@ nicer_label = {"neural_network": "Neural Network",
 
 font_dictionary = {'fontname':'Times New Roman'}
 
+def convert_case(variable_name):
+    # Converts snake case inputs to something that looks nice and graphy
+    variable_name = variable_name.replace("_", " ")
+    components = variable_name.split(' ')
+    for i in range(len(components)):
+        if (components[i] == "n") or components[i] == "num":
+            components[i] = "Number"
+        elif components[i] == "dim":
+            components[i] = "Dimension Size"
+        elif components[i] == "epochs":
+            components[i] = "Epoch"
+        else:
+            components[i] = components[i].capitalize()
+    return components[0] + ''.join(" "+x.title() for x in components[1:])
+
 
 def plot_silhoutte(X_training,
                    cluster_labels,
@@ -348,7 +363,6 @@ def generate_validation_curve_plot_regression(architecture,
     plt.xlabel(convert_case(parameter), **font_dictionary)
     plt.ylabel("Accuracy (%)", **font_dictionary)
     plt.grid()
-    plt.ylim(x_lower_bound, 1.01)
     lw = 2
     plot_data_fn(param_range, train_scores_mean, "-", color="b", label="Training score", lw=lw)
     plt.fill_between(
@@ -545,7 +559,6 @@ def generate_learning_curve_plot_regression(architecture,
         the_file.write(output_string2)
 
     plt.grid()
-    plt.ylim(-1.00, 0.0)
     plt.fill_between(
         train_sizes,
         train_scores_mean - train_scores_std,
