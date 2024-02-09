@@ -1,0 +1,22 @@
+name: ml # Short for Machine Learning (Supervised Learning Algorithms)
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8.5 # For obvious reasons we need python lol
+  - matplotlib # For generating plots
+  - pyyaml # For saving yaml type files
+  - jupyter # For running experiments
+  - scikit-learn=1.0.2 # For accuracy score
+  - tensorflow # For Neural Network tuning
+  - imbalanced-learn # For correcting class imbalance
+  - pandas # For generating results to compare in testing
+  - openpyxl # For writing Excel files with results tables
+  - scipy # For computing kurtosis
+  - pip
+  - pip:
+      - git+https://github.com/adriangb/scikeras.git
+      - SHAP
+
+# Install: conda create -f environment.yml
+# NOTE: For reinstalling: conda env update --file environment.yml  --prune
